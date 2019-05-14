@@ -1,11 +1,5 @@
-use std::io::{self, BufReader};
-use std::io::prelude::*;
-use std::fs::File;
-
+use std::{fs::File, fmt, io::{self, BufReader, prelude::*}};
 use clap::{Arg, App};
-
-use std::fmt;
-
 use colored::*;
 
 extern crate clap;
@@ -227,10 +221,10 @@ fn main() -> io::Result<()> {
         .author("Konstankino LLC")
         .about("Linter for your variables and constants.")
         .arg(Arg::with_name("LINE")
-                 .required(true)
-                 .takes_value(true)
-                 .index(1)
-                 .help("LOC to lint"))
+             .required(true)
+             .takes_value(true)
+             .index(1)
+             .help("LOC to lint"))
         .get_matches();
 
     let let_re = regex::Regex::new(r"let +(\w+) *?= *?([[:punct:][:alnum:]]+)\.*?").unwrap();
