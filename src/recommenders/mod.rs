@@ -14,6 +14,7 @@ pub enum VariableKind {
     Var,
     Let,
     Global,
+    Const,
 }
 
 #[derive(Debug, PartialEq)]
@@ -58,12 +59,6 @@ impl Variable {
 
 }
 
-impl PartialEq for Variable {
-    fn eq(&self, other: &Variable) -> bool {
-        self.name == other.name && self.kind == other.kind && self.scope == other.scope
-    }
-}
-
 pub trait Recommender {
     fn suggest(&self, variable: &Variable) -> ReportLine;
 }
@@ -72,4 +67,10 @@ pub trait Recommender {
 pub struct ReportLine {
     pub title: String,
     pub variable_name: String,
+}
+
+impl PartialEq for Variable {
+    fn eq(&self, other: &Variable) -> bool {
+        self.name == other.name && self.scope == other.scope
+    }
 }
