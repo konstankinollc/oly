@@ -1,0 +1,10 @@
+[package]
+name = "nameit"
+version = "0.1.0"
+authors = ["Bogdan Kulbida <info@konstankino.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "2.26"
+regex = "1.1"
+colored = "1"
