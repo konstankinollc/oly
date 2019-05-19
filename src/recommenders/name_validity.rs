@@ -1,4 +1,9 @@
-use crate::recommenders::{Recommender, Variable, ReportLine, VariableKind};
+use crate::recommenders::{
+    Recommender,
+    Variable,
+    ReportLine,
+    VariableKind,
+};
 
 pub struct NameValidity {}
 

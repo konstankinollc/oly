@@ -5,7 +5,7 @@ use colored::*;
 extern crate clap;
 
 mod recommenders;
-mod reports;
+mod report;
 mod parser;
 
 fn main() -> io::Result<()> {
@@ -23,7 +23,9 @@ fn main() -> io::Result<()> {
 
     let file_name = matches.value_of("FILE_PATH").unwrap();
 
-    match parser::Parser::parse(file_name) {
+    let data = parser::Reader::read_file(file_name);
+
+    match parser::Parser::parse_loc(data) {
         Ok(report_lines) => {
             for line in report_lines.iter() {
                 println!("{:<3} {}", '\u{1F325}', line.title.white());
